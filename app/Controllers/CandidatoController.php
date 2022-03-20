@@ -16,24 +16,39 @@ class CandidatoController extends BaseController
 
     public function index()
     {
-        //
+        return \json_encode([
+            'data' => $this->model->findAll()
+        ]);
     }
 
     public function save()
     {
+
         $this->model->save([
+            'nome' => service('request')->getPost('nome'),
+            'email' => service('request')->getPost('email'),
+            'avaliacao' => service('request')->getPost('nota')
+        ]);
+
+        return \json_encode([
+            'data' => $this->model->findAll()
+        ]);
+    }
+
+    public function update()
+    {        
+        $this->model->update([
             'nome' => '', 
             'email' => '', 
             'avaliacao' => ''
         ]);
     }
 
-    public function update()
+    public function search()
     {
-        $this->model->update([
-            'nome' => '', 
-            'email' => '', 
-            'avaliacao' => ''
+        $candidatos = $this->model->like('nome', service('request')->getGet('text'))->findAll();
+        return \json_encode([
+            'data' => $candidatos
         ]);
     }
 

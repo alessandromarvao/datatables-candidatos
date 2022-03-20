@@ -12,14 +12,15 @@ class CandidatoModel extends Model
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
     protected $allowedFields    = [
         'nome', 'email', 'avaliacao'
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
-
-
+    protected $updatedField  = false;
+    protected $deletedField  = false;
 }

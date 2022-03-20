@@ -19,7 +19,7 @@ class CreateTableCandidato extends Migration
                 'constraint' => 100
             ],
             'avaliacao' => [
-                'type' => 'INT'
+                'type' => 'DECIMAL(10,5)'
             ],
             'created_at' => [
                 'type' => 'DATETIME',
